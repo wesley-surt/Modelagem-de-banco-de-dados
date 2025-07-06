@@ -1,9 +1,12 @@
 Etapa 1. Modelar os aspéctos levantados para serem solucionados:
 
-- O produto deve ser registrado no banco de dados quando der entrada
 - O produto deve ter baixa no banco de dados quando der saída
-- As entradas e saídas devem ser registradas
-- Fornecedores devem ser cadastrados
+- O produto deve ser registrado no banco de dados quando der entrada
+- As movimentações de entradas e saídas devem ser registradas
+- Os fornecedores devem ser registrados
+- Os clientes devem ser registrados
+- Fornecedores fornecem produtos
+- Clientes compram prudutos
 - Os produtos devem ter as seguintes informações registradas: código, nome produto, quantidade, data validade, fornecedor
 - Os fornecedores devem ter as seguintes informções registradas: cnpj, nome fornecedor, email
 - Um produto pode ser fornecido por um ou vários fornecedores
