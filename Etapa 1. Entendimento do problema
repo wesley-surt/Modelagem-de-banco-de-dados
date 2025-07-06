@@ -1,3 +1,10 @@
-## Etapa 1. Modelar os seguintes aspéctos:
-* Aqui deve se pensar nos aspéctos que desejo modelar, as necessidades de dados, que os usuários terão ao longo do uso do sistema, como: Clentes alugam carros em agências; 1 carro pertence a 1 agência e 1 agência 
-pode possuir mias de 1 carro; as informações de carro que precisam ser armazenadas são: placa, modelo, ano e agência.
+Etapa 1. Modelar os aspéctos levantados para serem solucionados:
+
+- O produto deve ser registrado no banco de dados quando der entrada
+- O produto deve ter baixa no banco de dados quando der saída
+- As entradas e saídas devem ser registradas
+- Fornecedores devem ser cadastrados
+- Os produtos devem ter as seguintes informações registradas: código, nome produto, quantidade, data validade, fornecedor
+- Os fornecedores devem ter as seguintes informções registradas: cnpj, nome fornecedor, email
+- Um produto pode ser fornecido por um ou vários fornecedores
+- Um fornecedor pode fornecer um ou vários produtos diferentes
