@@ -1,5 +1,5 @@
 # Etapa 1.
-## **Modelar os aspéctos levantados para serem solucionados:**
+## **Aspéctos levantados a serem solucionados - levantamento de requisitos:**
 
 - O produto deve ter baixa no banco de dados quando der saída
 - O produto deve ser registrado no banco de dados quando der entrada
