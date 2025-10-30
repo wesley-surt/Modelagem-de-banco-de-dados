@@ -40,6 +40,8 @@ Nesta etapa, é produzido o modelo conceitual do banco de dados, usando os princ
 
 > O atributo **Quantidade em Estoque** não está na tabela `Produto`. Ele será **sempre calculado** (Soma das entradas em `Item_Compra` - Soma das saídas em `Item_Venda`) pela aplicação (Back-end) ou pelo SGBD (View/Stored Procedure) para garantir a integridade total dos dados.
 
+---
+### ✔️ Diagrama Entidade-Relacionamento (DER):
 
-![Modelagem Conceitual](https://github.com/user-attachments/assets/abed2e96-5079-497e-a8ab-ccc8e66b4146)
+<img width="1295" height="792" alt="modelagem_estoque_DER" src="https://github.com/user-attachments/assets/89bad332-caa0-499a-b0b5-b021163c5c20" />
 
