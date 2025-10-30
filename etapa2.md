@@ -1,32 +1,45 @@
-# Etapa 2.
-## Modelagem Conceitual
-Nesta etapa é produzido o modelo conceitual do banco de dados, usando os modelos MER (Modelo Entidade Relacionamento) e DER (Diagrama Entidade Relacionamento).
+# 🚀 Sistema de Controle de Estoque - Modelagem de Dados
 
-<br>
+## Etapa 2. Modelagem Conceitual
 
-### **Entidades e seus atributos:**
-- Fornecedor:
-  - CNPJ (PK)
-  - Razão social
-  - Contato
-<br>
-  
-- Cliente:
-  - CPF / CNPJ (PK)
-  - Nome
-  - Contato
- <br>
-    
-- Produto:
-  - Código (PK)
-  - Nome
-  - Quantidade
-  - Fornecedor (FK)
-<br>
+Nesta etapa, é produzido o modelo conceitual do banco de dados, usando os princípios de Entidade-Relacionamento (MER/DER) para definir as estruturas de dados.
 
-### **Relacionamentos:**
-- Movimentação entrada
-- Movimentação saída
+---
+
+### 🧱 Entidades e Atributos Principais
+
+| Entidade | Chave Primária (PK) | Atributos | Observações |
+| :--- | :--- | :--- | :--- |
+| **Fornecedor** | `CNPJ` | * Razão Social, Tipo de Mercadoria, Contato (Telefone, Email), Endereço (`FK`) | O CNPJ garante a unicidade do Fornecedor. |
+| **Cliente** | `Identificador Pessoal` | * Nome, Contato (Telefone, Email), Endereço (`FK`) | O identificador pessoal (CPF/CNPJ) atende ao requisito de rastreio. |
+| **Produto** | `Código` | * Nome, Fornecedor (`FK`), Lote | Representa o item de estoque. O `Fornecedor (FK)` pode ser removido e a dependência totalmente transferida para `fornecedor_produto` para evitar redundância na 1FN/2FN, mas a mantemos aqui como referência principal. |
+| **Endereço** | `ID (PK - Sugerido)` | * Logradouro, Número, Bairro, Cidade, Estado | Entidade opcional para normalização de dados de localização. |
+
+---
+
+### 🔄 Entidades de Transação (Movimentação de Estoque)
+
+| Entidade | Chave Primária (PK) | Chaves Estrangeiras (FK) | Atributos | Finalidade |
+| :--- | :--- | :--- | :--- | :--- |
+| **Compra** | `ID Compra` | `ID Fornecedor` | * Data/Hora, Valor Total, Forma de Pagamento, Nota Fiscal | Cabeçalho das transações de entrada de estoque. |
+| **Item_Compra** | `ID (PK - Sugerido)` | `ID Compra`, `ID Produto` | * Quantidade Comprada, Valor Unitário (no momento da compra) | Detalhe da Compra: Vincula o produto à transação e registra o custo exato. |
+| **Venda** | `ID Venda` | `ID Cliente` | * Data/Hora, Valor Total, Forma de Pagamento | Cabeçalho das transações de saída de estoque. |
+| **Item_Venda** | `ID (PK - Sugerido)` | `ID Venda`, `ID Produto` | * Quantidade Vendida, Valor Unitário (no momento da venda) | Detalhe da Venda: Vincula o produto à transação e registra o preço exato. |
+
+---
+
+### 🤝 Tabela Associativa (Relacionamento N:N)
+
+| Entidade | Chave Primária (PK) | Chaves Estrangeiras (FK) | Atributos | Finalidade |
+| :--- | :--- | :--- | :--- | :--- |
+| **fornecedor_produto** | **Composta**: `ID Fornecedor` + `ID Produto` | `ID Fornecedor`, `ID Produto` | * Valor Unitário Padrão pelo Fornecedor, Prazo de Entrega | Resolve o relacionamento Muitos-para-Muitos e armazena condições específicas do Fornecedor para o Produto. |
+
+***
+
+### 📌 Observação sobre o Estoque (`Quantidade`):
+
+> O atributo **Quantidade em Estoque** não está na tabela `Produto`. Ele será **sempre calculado** (Soma das entradas em `Item_Compra` - Soma das saídas em `Item_Venda`) pela aplicação (Back-end) ou pelo SGBD (View/Stored Procedure) para garantir a integridade total dos dados.
+
 
 ![Modelagem Conceitual](https://github.com/user-attachments/assets/abed2e96-5079-497e-a8ab-ccc8e66b4146)
 
