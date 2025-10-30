@@ -1,15 +1,25 @@
 # Etapa 1.
 ## **Aspéctos levantados a serem solucionados - levantamento de requisitos:**
 
-- O produto deve ter baixa no banco de dados quando der saída
-- O produto deve ser registrado no banco de dados quando der entrada
-- As movimentações de entradas e saídas devem ser registradas
-- Os fornecedores devem ser registrados
-- Os clientes devem ser registrados
-- Fornecedores fornecem produtos
-- O papel do cliente no controle de estoque será meramente para identificação de para quem o produto está sendo enviado ao dar baixa no banco de dados
-- Os produtos devem ter as seguintes informações registradas: código, nome, quantidade, fornecedor
-- Os fornecedores devem ter as seguintes informções registradas: cnpj, razão social, contato
-- Um produto pode ser fornecido por um ou vários fornecedores
-- Um fornecedor pode fornecer um ou vários produtos diferentes
-- Um cliente pode adquirir um ou mais produtos
+- Produto tem código (chave primária), nome, fornecedor, lote
+
+- Os Fornecedores devem ser registrados
+- Fornecedores fornecem Produtos
+- Fornecedor tem cnpj (chave primária), razão social, tipo de mercadoria, contato (email, telefone), endereço (logradouro, número, bairro, cidade, Estado)
+
+- Os Clientes devem ser registrados
+- Clientes compram Produtos
+- Cliente tem identificador pessoal (cpf ou cnpj - chave primária), nome, tipo de pessoa (física ou jurídica), contato (email, telefone)
+- O papel do Cliente no controle de estoque será meramente para o rastreio do Produto
+
+- Venda tem chave primária (aleatória), chave estrangeira de cliente, data/hora, valor total, forma de pagamento
+- Venda (saída/baixa de estoque): relaciona-se com Cliente
+- Item Da Venda tem chave estrangeira de Venda, chave estrangeira de Produto, quantidade vendida, valor unitário (no momento da venda)
+
+- Compra tem chave primária, chave estrangeira de Fornecedor, data/hora, valor total, forma de pagamento, nota fiscal
+- Compra (entrada/aumento de estoque): relaciona-se com Fornecedor
+- Item compra tem chave estrangeira de Compra, chave estrangeira de Produto, quantidade comprada, custo unitário (no momento da compra)
+
+- Um Produto pode ser fornecido por um ou vários Fornecedores
+- Um Fornecedor pode fornecer um ou vários Produtos diferentes
+- Um Cliente pode adquirir um ou mais Produtos
