@@ -9,7 +9,7 @@
 
 - Os Clientes devem ser registrados
 - Clientes compram Produtos
-- Cliente tem identificador pessoal (cpf ou cnpj - chave primária), nome, tipo de pessoa (física ou jurídica), contato (email, telefone)
+- Cliente tem identificador pessoal (cpf ou cnpj - chave primária), nome, tipo de pessoa (física ou jurídica), contato (email, telefone), endereço (logradouro, número, bairro, cidade, Estado)
 - O papel do Cliente no controle de estoque será meramente para o rastreio do Produto
 
 - Venda tem chave primária (aleatória), chave estrangeira de cliente, data/hora, valor total, forma de pagamento
