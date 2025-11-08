@@ -1,6 +1,4 @@
-# 🚀 Sistema de Controle de Estoque - Modelagem de Dados
-
-## Etapa 2. Modelagem Conceitual
+# 🚀 Etapa 2. Modelagem Conceitual
 
 Nesta etapa, é produzido o modelo conceitual do banco de dados, usando os princípios de Entidade-Relacionamento (MER/DER) para definir as estruturas de dados.
 
