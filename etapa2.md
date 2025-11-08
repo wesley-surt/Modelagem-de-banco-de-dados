@@ -43,5 +43,5 @@ Nesta etapa, é produzido o modelo conceitual do banco de dados, usando os princ
 ---
 ### ✔️ Diagrama Entidade-Relacionamento (DER):
 
-<img width="1295" height="792" alt="modelagem_estoque_DER" src="https://github.com/user-attachments/assets/89bad332-caa0-499a-b0b5-b021163c5c20" />
+<img width="1294" height="792" alt="modelagem_de_estoque drawio - draw io e mais 3 páginas - Pessoal — Microsoft​ Edge 07_11_2025 22_53_00" src="https://github.com/user-attachments/assets/9d10f5d8-a850-4786-be80-4d584ca75123" />
 
