@@ -1,25 +1,86 @@
-# Etapa 1.
-## **Aspéctos levantados a serem solucionados - levantamento de requisitos:**
+# 🏁 Etapa 1: Levantamento de Requisitos
 
-- Produto tem código (chave primária), nome, fornecedor, lote
+> O objetivo desta etapa é definir as entidades, atributos e regras de negócio essenciais para a modelagem de um sistema simples de controle de estoque.
 
-- Os Fornecedores devem ser registrados
-- Fornecedores fornecem Produtos
-- Fornecedor tem cnpj (chave primária), razão social, tipo de mercadoria, contato (email, telefone), endereço (logradouro, número, bairro, cidade, Estado)
+---
 
-- Os Clientes devem ser registrados
-- Clientes compram Produtos
-- Cliente tem identificador pessoal (cpf ou cnpj - chave primária), nome, tipo de pessoa (física ou jurídica), contato (email, telefone), endereço (logradouro, número, bairro, cidade, Estado)
-- O papel do Cliente no controle de estoque será meramente para o rastreio do Produto
+## 🏛️ Entidades e Atributos
 
-- Venda tem chave primária (aleatória), chave estrangeira de cliente, data/hora, valor total, forma de pagamento
-- Venda (saída/baixa de estoque): relaciona-se com Cliente
-- Item Da Venda tem chave estrangeira de Venda, chave estrangeira de Produto, quantidade vendida, valor unitário (no momento da venda)
+Aqui estão as principais entidades de dados identificadas para o sistema:
 
-- Compra tem chave primária, chave estrangeira de Fornecedor, data/hora, valor total, forma de pagamento, nota fiscal
-- Compra (entrada/aumento de estoque): relaciona-se com Fornecedor
-- Item compra tem chave estrangeira de Compra, chave estrangeira de Produto, quantidade comprada, custo unitário (no momento da compra)
+### 📦 Produto
+* **PK:** Chave Primária
+* `Código`
+* `Nome`
 
-- Um Produto pode ser fornecido por um ou vários Fornecedores
-- Um Fornecedor pode fornecer um ou vários Produtos diferentes
-- Um Cliente pode adquirir um ou mais Produtos
+### 🚚 Fornecedor
+* **PK:** Chave Primária
+* `CNPJ`
+* `Razão Social`
+* `Tipo de Mercadoria`
+* `Contato` (Email, Telefone)
+* `Endereço` (FK)
+
+### 🙋 Cliente
+* **PK:** Chave Primária
+* `Identificador Pessoal` (CPF ou CNPJ)
+* `Nome`
+* `Tipo de Pessoa` (Física ou Jurídica)
+* `Contato` (Email, Telefone)
+* `Endereço` (FK)
+
+### 📍 Endereço
+* **PK:** Chave Primária
+* `Logradouro`
+* `Número`
+* `Bairro`
+* `Cidade`
+* `Estado`
+
+### 📈 Venda (Saída de Estoque)
+* **PK:** Chave Primária
+* `Cliente` (FK)
+* `Data/Hora`
+* `Valor Total`
+* `Forma de Pagamento`
+
+### 🛒 Item da Venda
+* **PK:** Chave Primária
+* `Venda` (FK)
+* `Produto` (FK)
+* `Quantidade Vendida`
+* `Valor Unitário` (Valor no momento da venda)
+
+### 📉 Compra (Entrada de Estoque)
+* **PK:** Chave Primária
+* `Fornecedor` (FK)
+* `Data/Hora`
+* `Valor Total`
+* `Forma de Pagamento`
+* `Nota Fiscal`
+
+### 🧾 Item da Compra
+* `Compra` (FK)
+* `Produto` (FK)
+* `Quantidade Comprada`
+* `Custo Unitário` (Custo no momento da compra)
+
+---
+
+## ⚙️ Regras de Negócio e Relacionamentos
+
+### Fluxo de Processos
+* **Gestão de Clientes:** Clientes devem ser registrados no sistema.
+* **Gestão de Fornecedores:** Fornecedores devem ser registrados no sistema.
+* **Entrada de Estoque (Compra):** Está diretamente relacionada a um **Fornecedor**.
+* **Saída de Estoque (Venda):** Está diretamente relacionada a um **Cliente**.
+
+### Cardinalidade (Relacionamentos)
+* **Fornecedor ↔ Produto (N:N)**
+    * Um **Produto** pode ser fornecido por um ou vários **Fornecedores**.
+    * Um **Fornecedor** pode fornecer um ou vários **Produtos**.
+* **Cliente ↔ Produto (N:N, via Venda)**
+    * Um **Cliente** pode adquirir um ou mais **Produtos** (através de múltiplas vendas).
+* **Compra ↔ Nota Fiscal (1:1)**
+    * Uma **Compra** tem uma **Nota Fiscal**.
+    * Uma **Nota Fiscal** pertence a uma **Compra**.
