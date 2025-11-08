@@ -60,6 +60,7 @@ Aqui estão as principais entidades de dados identificadas para o sistema:
 * `Nota Fiscal`
 
 ### 🧾 Item da Compra
+* **PK:** Chave Primária
 * `Compra` (FK)
 * `Produto` (FK)
 * `Quantidade Comprada`
